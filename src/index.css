@@ -1,0 +1,12 @@
+.primary
+{
+    background-color:white;
+    color: black;
+    border-radius: 16px;    
+    padding: 5PX;
+
+}
+.primary:hover
+{
+    background-color: rgb(87, 196, 230);
+}
