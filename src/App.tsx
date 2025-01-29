@@ -4,8 +4,6 @@ import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import React, { useState, useEffect } from 'react';
 
-
-
 function App() {
    const [mode, setMode] = useState('light'); // Check whether dark mode is enabled or not!
 
@@ -21,15 +19,14 @@ function App() {
 
    // Set initial background color based on mode when the component mounts
    useEffect(() => {
-      document.body.style.backgroundColor = mode === 'dark' ? 'black' : 'white';
+      document.body.style.backgroundColor = mode === 'dark' ? 'grey' : 'white';
    }, [mode]);
 
    return (
       <>
-         {/* <Navbar title={"TextUtles"} aboutText='About TextUtiles' /> */}
          <Navbar title='TextUtils' mode={mode} toggleMode={toggleMode} aboutText='About' />
-         <div className="container mx-5"> {/* Use className for styling */}
-            <TextForm heading={"Enter The Text Here!"} />
+         <div className="container mx-5">
+            <TextForm heading={"Enter The Text Here!"} mode={mode} />
          </div>
       </>
    );
