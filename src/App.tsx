@@ -10,7 +10,7 @@ function App() {
    const toggleMode = () => {
       if (mode === 'light') {
          setMode('dark');
-         document.body.style.backgroundColor = 'black'; // Set background to black for dark mode
+         document.body.style.backgroundColor = '#102d39'; // Set background to black for dark mode
       } else {
          setMode('light');
          document.body.style.backgroundColor = 'white'; // Set background to white for light mode
@@ -19,7 +19,7 @@ function App() {
 
    // Set initial background color based on mode when the component mounts
    useEffect(() => {
-      document.body.style.backgroundColor = mode === 'dark' ? 'grey' : 'white';
+      document.body.style.backgroundColor = mode === 'dark' ? '#102d39' : 'white';
    }, [mode]);
 
    return (
