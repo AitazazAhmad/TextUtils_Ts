@@ -8,5 +8,7 @@
 }
 .primary:hover
 {
-    background-color: rgb(87, 196, 230);
+    background-color: {props.document.background};
+    background-color:#102d39;
+    color: white;
 }

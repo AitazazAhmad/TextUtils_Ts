@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 interface PropsHead {
     heading: string;
     mode: string; // Add mode prop
+    showAlert: (message: string, type: string) => void; // Add showAlert prop
 }
 
 const TextForm: React.FC<PropsHead> = (props) => {
@@ -11,21 +12,24 @@ const TextForm: React.FC<PropsHead> = (props) => {
     const handleUpClick = () => {
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert('Converted to Uppercase!', 'success'); // Use showAlert from props
     };
 
     const handleDownClick = () => {
         let down = text.toLowerCase();
         setText(down);
+        props.showAlert('Converted to Lowercase!', 'success'); // Use showAlert from props
     };
 
     const handleClearClick = () => {
-        let clear = '';
-        setText(clear);
+        setText('');
+        props.showAlert('Text Cleared!', 'warning'); // Use showAlert from props
     };
 
     const handleExtraSpaces = () => {
         let newText = text.replace(/\s+/g, ' ').trim();
         setText(newText);
+        props.showAlert('Removed Extra Spaces!', 'success'); // Use showAlert from props
     };
 
     const handleOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -34,6 +38,7 @@ const TextForm: React.FC<PropsHead> = (props) => {
 
     const handleCopy = () => {
         navigator.clipboard.writeText(text);
+        props.showAlert('Text Copied to Clipboard!', 'info'); // Use showAlert from props
     };
 
     return (
@@ -47,7 +52,7 @@ const TextForm: React.FC<PropsHead> = (props) => {
                     value={text}
                     onChange={handleOnChange}
                     style={{
-                        backgroundColor: props.mode === 'dark' ? '#333' : 'white',
+                        backgroundColor: props.mode === 'dark' ? 'rgb(32 47 51)' : 'white',
                         color: props.mode === 'dark' ? 'white' : 'black',
                     }}
                 ></textarea>
@@ -58,6 +63,7 @@ const TextForm: React.FC<PropsHead> = (props) => {
             <button className='primary my-2 mx-3' onClick={handleCopy}>Copy Text</button>
             <button className='primary my-2 mx-3' onClick={handleExtraSpaces}>Remove Extra Spaces</button>
             <div className="container my-3">
+                <h2>Your Text Summary</h2>
                 <p>{text.split(" ").length} Words {text.length} Characters</p>
                 <p>{0.008 * text.split("").length} Minutes for reading this</p>
                 <h2>Preview</h2>
