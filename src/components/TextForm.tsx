@@ -57,14 +57,17 @@ const TextForm: React.FC<PropsHead> = (props) => {
                     }}
                 ></textarea>
             </div>
-            <button className="primary my-4 mx-3" onClick={handleUpClick}>Convert to Uppercase</button>
-            <button className='primary my-2 mx-3' onClick={handleDownClick}>Convert to Lowercase</button>
-            <button className='primary my-2 mx-3' onClick={handleClearClick}>Clear Text</button>
-            <button className='primary my-2 mx-3' onClick={handleCopy}>Copy Text</button>
-            <button className='primary my-2 mx-3' onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+            <button className="primary my-4 mx-3 my-3" onClick={handleUpClick}>Convert to Uppercase</button>
+            <button className='primary my-2 mx-3 my-3' onClick={handleDownClick}>Convert to Lowercase</button>
+            <button className='primary my-2 mx-3 my-3' onClick={handleClearClick}>Clear Text</button>
+            <button className='primary my-2 mx-3 my-3' onClick={handleCopy}>Copy Text</button>
+            <button className='primary my-2 mx-3 my-3' onClick={handleExtraSpaces}>Remove Extra Spaces</button>
             <div className="container my-3">
                 <h2>Your Text Summary</h2>
-                <p>{text.split(" ").length} Words {text.length} Characters</p>
+                <p>
+                    {text.split(" ").filter((element) => element.length !== 0).length} Words,
+                    {text.length} Characters
+                </p>
                 <p>{0.008 * text.split("").length} Minutes for reading this</p>
                 <h2>Preview</h2>
                 <p>{text}</p>

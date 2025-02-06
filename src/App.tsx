@@ -37,17 +37,19 @@ function App() {
    return (
       <Router>
          <>
-            <Navbar title='TextUtils' mode={mode} toggleMode={toggleMode} aboutText='About' />
-            {alert && (
-               <div className={`alert alert-${alert.type}`} role="alert">
-                  {alert.message}
-               </div>
-            )}
+            <div style={{ height: '70px' }}>
+               <Navbar title='TextUtils' mode={mode} toggleMode={toggleMode} aboutText='About' />
+               {alert && (
+                  <div className={`alert alert-${alert.type}`} role="alert">
+                     {alert.message}
+                  </div>
+               )}
+            </div>
 
-            <div className="container mx-5">
+            <div className="container mx-5 my-5">
                <Routes>
                   <Route path="/" element={<TextForm heading={"Enter The Text Here!"} mode={mode} showAlert={showAlert} />} />
-                  <Route path="/about" element={<About />} /> {/* Route for About page */}
+                  <Route path="/about" element={<About mode={mode} />} /> {/* Route for About page */}
                </Routes>
             </div>
          </>
